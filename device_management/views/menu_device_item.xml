@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem name="IT" id="menu_root_it" web_icon="device_management,static/description/icon.png">
+        <menuitem id="menu_it" name="Devices">
+            <menuitem id="menu_device_info" name="Info" action="device_management.action_device_info"/>
+            <menuitem id="menu_device_issue" name="Device Issue" action="device_management.action_device_issue"/>
+            <menuitem id="menu_device_complaint" name="Device Complaint" action="device_management.action_device_complaint"/>
+            <menuitem id="menu_device_replacement" name="Device Replacement" action="device_management.action_device_replacement"/>
+        </menuitem>
+    </menuitem>
+</odoo>

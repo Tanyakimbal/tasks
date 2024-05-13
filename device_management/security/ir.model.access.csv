@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_device_info,access_device_info,device_management.model_device_info,base.group_user,1,1,1,1
+access_device_issue,access_device_issue,device_management.model_device_issue,base.group_user,1,1,1,1
+access_device_complaint,access_device_complaint,device_management.model_device_complaint,base.group_user,1,1,1,1
+access_device_replacement,access_device_replacement,device_management.model_device_replacement,base.group_user,1,1,1,1

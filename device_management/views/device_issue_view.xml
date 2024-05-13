@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+   <data>
+       <record id="device_issue_tree_view" model="ir.ui.view">
+           <field name="name">device.issue.tree</field>
+           <field name="model">device.issue</field>
+           <field name="arch" type="xml">
+               <tree>
+                   <field name="device_id"/>
+                   <field name="name"/>
+                   <field name="emp_id"/>
+                   <field name="start_date"/>
+               </tree>
+           </field>
+       </record>
+
+       <record id="device_issue_form_view" model="ir.ui.view">
+           <field name="name">device.issue.form</field>
+           <field name="model">device.issue</field>
+           <field name="arch" type="xml">
+               <form>
+                   <sheet>
+                     <group>
+                         <field name="device_id"/>
+                         <field name="name"/>
+                         <field name="emp_id"/>
+                         <field name="start_date"/>
+                     </group>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+
+      <record id="action_device_issue" model="ir.actions.act_window">
+           <field name="name">Device_Issue</field>
+           <field name="res_model">device.issue</field>
+           <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="device_issue_tree_view"/>
+           <field name="help" type="html">
+               <p class="o_view_nocontent_smiling_face">
+                   Add new device issue!
+               </p>
+           </field>
+       </record>
+   </data>
+</odoo>

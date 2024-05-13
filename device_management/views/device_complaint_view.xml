@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+   <data>
+       <record id="device_complaint_tree_view" model="ir.ui.view">
+           <field name="name">device.complaint.tree</field>
+           <field name="model">device.complaint</field>
+           <field name="arch" type="xml">
+               <tree>
+                   <field name="emp_id"/>
+                   <field name="device_id"/>
+                   <field name="reason"/>
+                   <field name="if_approved"/>
+               </tree>
+           </field>
+       </record>
+
+       <record id="device_complaint_form_view" model="ir.ui.view">
+           <field name="name">device.complaint.form</field>
+           <field name="model">device.complaint</field>
+           <field name="arch" type="xml">
+               <form>
+                   <sheet>
+                     <group>
+                         <field name="emp_id"/>
+                         <field name="device_id"/>
+                         <field name="reason"/>
+                         <field name="user"/>
+                         <field name="if_approved"/>
+                     </group>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+
+      <record id="action_device_complaint" model="ir.actions.act_window">
+           <field name="name">Device_Complaint</field>
+           <field name="res_model">device.complaint</field>
+           <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="device_complaint_tree_view"/>
+           <field name="help" type="html">
+               <p class="o_view_nocontent_smiling_face">
+                   Add new device complaint!
+               </p>
+           </field>
+       </record>
+   </data>
+</odoo>

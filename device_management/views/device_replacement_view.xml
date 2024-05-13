@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+   <data>
+       <record id="device_replacement_tree_view" model="ir.ui.view">
+           <field name="name">device.replacement.tree</field>
+           <field name="model">device.replacement</field>
+           <field name="arch" type="xml">
+               <tree>
+                   <field name="emp_id"/>
+                   <field name="device_id"/>
+                   <field name="user"/>
+                   <field name="reason"/>
+                   <field name="date"/>
+               </tree>
+           </field>
+       </record>
+
+       <record id="device_replacement_form_view" model="ir.ui.view">
+           <field name="name">device.replacement.form</field>
+           <field name="model">device.replacement</field>
+           <field name="arch" type="xml">
+               <form>
+                   <sheet>
+                     <group>
+                         <field name="emp_id"/>
+                         <field name="device_id"/>
+                         <field name="user"/>
+                         <field name="reason"/>
+                         <field name="date"/>
+                     </group>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+
+      <record id="action_device_replacement" model="ir.actions.act_window">
+           <field name="name">Device_Replacement</field>
+           <field name="res_model">device.replacement</field>
+           <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="device_replacement_tree_view"/>
+           <field name="help" type="html">
+               <p class="o_view_nocontent_smiling_face">
+                   Add new device Replacemnt!
+               </p>
+           </field>
+       </record>
+   </data>
+</odoo>
