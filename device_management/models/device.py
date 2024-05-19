@@ -33,6 +33,17 @@ class DeviceComplaint(models.Model):
     user = fields.Many2one('res.users', string="User")
     if_approved = fields.Boolean(string="Approved by User", default=False)
 
+    def action_replace_device(self):
+        replace_data = {
+        'emp_id':self.emp_id,
+        'device_id':self.device_id,
+        'user':self.user.name,
+        'reason':self.reason,
+        'date':fields.Date.today()
+        }
+        self.env['device.replacement'].create(replace_data)
+
+
 class DeviceReplacement(models.Model):
     _name = 'device.replacement'  # name of model
     _description = 'Replacement of Issued Devices'

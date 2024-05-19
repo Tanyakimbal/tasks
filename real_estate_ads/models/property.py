@@ -17,9 +17,9 @@ class Property(models.Model):
     description = fields.Text(string="Description")
     postcode = fields.Char(string="Postcode")
     data_availability = fields.Date(string="Available From", readonly=True)
-    expected_price = fields.Float(string="Expected Price")
-    best_offer = fields.Float(string="Best Offer")
-    selling_price = fields.Float(string="Selling Price")
+    expected_price = fields.Monetary(string="Expected Price")
+    best_offer = fields.Monetary(string="Best Offer")
+    selling_price = fields.Monetary(string="Selling Price", readonly=True)
     bedrooms = fields.Integer(string="Name")
     living_area = fields.Integer(string="Living Area(sqm)")
     facades = fields.Integer(string="Facades")
@@ -42,6 +42,7 @@ class Property(models.Model):
     sales_id = fields.Many2one('res.users', string="Salesman")
     buyer_id = fields.Many2one('res.partner', string="Buyer", domain=[('is_company', '=', True)])
     phone = fields.Char(string="Phone", related='buyer_id.phone')
+    currency_id = fields.Many2one("res.currency", string="Currency", default=lambda self: self.env.user.company_id.currency_id)
 
 
     #access rights - id, create_date, create_uid, write_date, write_uid
@@ -55,7 +56,9 @@ class PropertyType(models.Model):
 class PropertyTag(models.Model):
     _name = 'estate.property.tag'   #name of model
     _description = 'Property Tag'
+    #fields
     name = fields.Char(string="Name", required=True)
+    color = fields.Integer(string="Color")
 
 
 

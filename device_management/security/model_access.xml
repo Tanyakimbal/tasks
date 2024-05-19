@@ -1,0 +1,23 @@
+<odoo>
+     <data>
+        <record id="device_management.access_device_complaint_manager" model="ir.model.access">
+            <field name="name">Complaint access for manager</field>
+            <field name="model_id" ref="device_management.model_device_complaint"/>
+            <field name="group_id" ref="device_management.group_device_manager"/>
+            <field name="perm_read">1</field>
+            <field name="perm_write">1</field>
+            <field name="perm_create">1</field>
+            <field name="perm_unlink">1</field>
+        </record>
+
+        <record id="device_management.access_device_complaint_employee" model="ir.model.access">
+            <field name="name">Complaint access for employee</field>
+            <field name="model_id" ref="device_management.model_device_complaint"/>
+            <field name="group_id" ref="device_management.group_device_employee"/>
+            <field name="perm_read">1</field>
+            <field name="perm_write">1</field>
+            <field name="perm_create">1</field>
+            <field name="perm_unlink">1</field>
+        </record>
+    </data>
+</odoo>

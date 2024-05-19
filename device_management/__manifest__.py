@@ -11,6 +11,8 @@
     "depends" : ['hr', 'base'],
     "data" : [
         'security/ir.model.access.csv',
+        'security/res_groups.xml',
+        'security/model_access.xml',
         'views/device_view.xml',
         'views/device_issue_view.xml',
         'views/device_complaint_view.xml',

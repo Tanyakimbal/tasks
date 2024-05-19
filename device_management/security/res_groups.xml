@@ -1,0 +1,19 @@
+<odoo>
+    <record id="module_category_device_management" model="ir.module.category">
+        <field name="name">Devices</field>
+        <field name="description">Helps to manage IT gadgets of company.</field>
+        <field name="sequence">60</field>
+    </record>
+
+    <record id="group_device_employee" model="res.groups">
+        <field name="name">Employee: Manage own device</field>
+        <field name="category_id" ref="device_management.module_category_device_management"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_device_manager" model="res.groups">
+        <field name="name">IT-Manager: Manage all devices</field>
+        <field name="category_id" ref="device_management.module_category_device_management"/>
+        <field name="implied_ids" eval="[(4, ref('device_management.group_device_employee'))]"/>
+    </record>
+</odoo>

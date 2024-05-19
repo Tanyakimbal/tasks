@@ -10,6 +10,7 @@
                    <field name="device_id"/>
                    <field name="reason"/>
                    <field name="if_approved"/>
+                   <button name="action_replace_device" type="object" string="Replace" attrs="{'invisible': [('if_approved', '=', False)]}"/>
                </tree>
            </field>
        </record>
@@ -25,7 +26,7 @@
                          <field name="device_id"/>
                          <field name="reason"/>
                          <field name="user"/>
-                         <field name="if_approved"/>
+                         <field name="if_approved" groups="device_management.group_device_manager"/>
                      </group>
                    </sheet>
                </form>

@@ -6,9 +6,9 @@ class PropertyOffer(models.Model):
     _name = 'estate.property.offer'   #name of model
     _description = 'Estate Property Offers'
 
-    price = fields.Float(string="Price")
+    price = fields.Monetary(string="Price")
     status = fields.Selection(
-        [('accepted', 'Accepted'), ('refused', 'Refused')],
+        [('accepted', 'Accepted'), ('decline', 'Declined')],
         string="Status"
     )
     property_id = fields.Many2one('estate.property', string="Property")
@@ -19,6 +19,8 @@ class PropertyOffer(models.Model):
 
     creation_date = fields.Date(string="Create Date", default=_set_create_date)
     validity = fields.Integer(string="Validity")
+    currency_id = fields.Many2one("res.currency", string="Currency",
+                                  default=lambda self: self.env.user.company_id.currency_id)
 
     #takes fields as arguments, that field is in view and also included in create or write call
     #validity cant be negative.
@@ -72,6 +74,26 @@ class PropertyOffer(models.Model):
     @api.autovacuum
     def _clean_offers(self):
         self.search([('status', '=', 'refused')]).unlink()
+
+    def action_accept_offer(self):
+        if self.property_id:
+            #ensure not more than 1 offer is accepted.
+            self._validate_accepted_offer()
+            self.property_id.selling_price = self.price
+        self.status = 'accepted'
+
+    def _validate_accepted_offer(self):
+        #search
+        offers = self.env['estate.property.offer'].search([
+            ('property_id', '=', self.property_id.id),
+            ('status', '=', 'accepted')
+        ])
+        if offers:
+            print(self.property_id.id)
+            raise ValidationError("You already have an accepted offer.")
+
+    def action_decline_offer(self):
+        self.status = 'decline'
 
 
 
